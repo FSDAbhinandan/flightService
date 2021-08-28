@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.flight.entity.FlightList;
 import com.flight.repository.FlightListRepository;
@@ -27,5 +28,14 @@ public class FlightListService {
 	
 	public void deleteFlight(int id) {
 		this.flightListRepository.deleteById(id);
+	}
+	
+//	Block And Unblock The Flight
+	
+	public FlightList blockFlight(int id) {
+		FlightList flightList = this.flightListRepository.findById(id).get();
+		flightList.setBlock(true);
+		return flightListRepository.save(flightList);
+		
 	}
 }

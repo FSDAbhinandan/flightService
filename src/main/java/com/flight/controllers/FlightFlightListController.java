@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,5 +39,12 @@ public class FlightFlightListController {
 	@DeleteMapping("/flights/{id}")
 	public void deleteFlight(@PathVariable("id") int id) {
 		this.flightListService.deleteFlight(id);
+	}
+	
+//	Block And Unblock The Flight
+	
+	@PutMapping("/flights/{id}")
+	public FlightList blockFlight(@PathVariable("id") int id) {
+	  return this.flightListService.blockFlight(id);
 	}
 }
